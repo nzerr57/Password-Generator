@@ -41,33 +41,39 @@ function generatePassword() {
 
     //Determine if user wants to use special characters
     var specialConfirm = confirm("Do you want to include special characters in your password?");
-    
-    //Use user inputs to determine which character types are in password
-    if (lowerConfirm) {
-      possibleCharacters += lowercaseLetters;
-      requiredCharacters += lowercaseLetters[Math.floor(Math.random() * lowercaseLetters.length)];
-    }
+    if (lowerConfirm || upperConfirm || numberConfirm || specialConfirm) {
 
-    if (upperConfirm) {
-      possibleCharacters += uppercaseLetters;
-      requiredCharacters += uppercaseLetters[Math.floor(Math.random() * uppercaseLetters.length)];
-    }
 
-    if (numberConfirm) {
-      possibleCharacters += numbers;
-      requiredCharacters += numbers[Math.floor(Math.random() * numbers.length)];
-    }
+      //Use user inputs to determine which character types are in password
+      if (lowerConfirm) {
+        possibleCharacters += lowercaseLetters;
+        requiredCharacters += lowercaseLetters[Math.floor(Math.random() * lowercaseLetters.length)];
+      }
 
-    if (specialConfirm) {
-      possibleCharacters += specialCharacters;
-      requiredCharacters += specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
-    }
+      if (upperConfirm) {
+        possibleCharacters += uppercaseLetters;
+        requiredCharacters += uppercaseLetters[Math.floor(Math.random() * uppercaseLetters.length)];
+      }
 
-    //Loop to grab random characters from chosen character types and will stop at chosen password lenth
-    for (var i = 0; i < charAmount; i++) {
-      var randomIndex = Math.floor(Math.random() * possibleCharacters.length);
-      possibleCharacters[randomIndex];
-      passwordString += possibleCharacters[randomIndex];
+      if (numberConfirm) {
+        possibleCharacters += numbers;
+        requiredCharacters += numbers[Math.floor(Math.random() * numbers.length)];
+      }
+
+      if (specialConfirm) {
+        possibleCharacters += specialCharacters;
+        requiredCharacters += specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
+      }
+
+      //Loop to grab random characters from chosen character types and will stop at chosen password lenth
+      for (var i = 0; i < charAmount; i++) {
+        var randomIndex = Math.floor(Math.random() * possibleCharacters.length);
+        possibleCharacters[randomIndex];
+        passwordString += possibleCharacters[randomIndex];
+      }
+    } else {
+      alert("Please choose a valid option.");
+      return "";
     }
   }
 
